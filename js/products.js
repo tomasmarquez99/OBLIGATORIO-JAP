@@ -1,11 +1,9 @@
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
-<<<<<<< HEAD
 document.addEventListener("DOMContentLoaded", function (e) {
 
 });
-=======
 function getJSONData(PRODUCTS_URL) {
     var contenedor = document.getElementsByClassName("producto");
     
@@ -39,4 +37,3 @@ document.addEventListener("DOMContentLoaded", getJSONData(PRODUCTS_URL));
 
 
 
->>>>>>> Tomas
