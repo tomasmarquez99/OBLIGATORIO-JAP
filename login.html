@@ -14,7 +14,8 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <style>
-    html, body{
+    html,
+    body {
       height: 100%;
     }
 
@@ -39,16 +40,21 @@
 
 <body class="text-center">
   <div class="container p-5">
+    
+    <h3>Login</h3>
     <form>
-      
+
       <input type="email" name="Mail" placeholder="Mail"><br>
       <input type="password" name="Password" placeholder="Password"><br>
       <br>
-      </form>
-  <button class="login" onclick="boton()"> Login </button>
+      <input type="checkbox" id="Remember" value="Remember_me> <label for="Remember_me"> Remember me</label>
+      <br><br>
+    </form>
+    <button class="login" onclick="boton()"> Login </button>
   </div>
 
   <script src="js/init.js"></script>
   <script src="js/login.js"></script>
 </body>
+
 </html>
