@@ -1,36 +1,29 @@
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
-function getJSONData(PRODUCTS_URL) {
-    var contenedor = document.getElementsByClassName("producto");
+var arrayProductos = [];
+  
     
-    fetch(PRODUCTS_URL)
-        .then(respuesta => respuesta.json())
+function arrayProductos(array) {
 
-        .then(datos => {
-            for (let i in datos){
-                var datosJSON = datos[i].name;
-                console.log(datosJSON);
-                document.createTextNode(datosJSON);
-parrafo = document.createElement('p');
-document.body.appendChild(parrafo);
-parrafo.appendChild(datosJSON);
-
+            for (let i = 0; i < array.length; ++i) {
+                console.log(array[i].name);
+                
 
 
            
               
                 
             };
+        };
             
       
 
 
-        })
-        .catch(error => alert("Hubo un error: " + error));
-};
-document.addEventListener("DOMContentLoaded", getJSONData(PRODUCTS_URL));
+document.addEventListener("DOMContentLoaded", function (e){
+getJSONData(PRODUCTS_URL).then(function (resultado) {
 
 
+})}
 
-
+);
