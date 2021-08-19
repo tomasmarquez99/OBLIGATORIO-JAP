@@ -8,6 +8,6 @@
 
 function boton(){
 
-window.location.href = "index.html"
+window.location.href = "inicio.html"
 
 };
