@@ -2,12 +2,34 @@
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 
-/*document.addEventListener("DOMContentLoaded",);*/ 
+document.addEventListener("DOMContentLoaded", function (){
+
+document.getElementById('submitBtn').addEventListener('click', function(){
+
+let inputMail = document.getElementById('Mail');
+let inputPassword = document.getElementById('Password');
+let camposCompletos = true;
+
+if (inputMail.value === ''){
+    inputMail.classList.add('invalid');
+    camposCompletos = false;
+}else{
+    inputMail.classList.remove('invalid');
+}
+
+if (inputPassword.value === ''){
+    inputPassword.classList.add('invalid');
+    camposCompletos = false;
+}else{
+    inputPassword.classList.remove('invalid');
+}
+ if (camposCompletos){
+    window.location = "inicio.html";
+ }
+}
+
+)
+
+})
 
 
-
-function boton(){
-
-window.location.href = "inicio.html"
-
-};

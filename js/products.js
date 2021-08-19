@@ -9,14 +9,15 @@ function mostrarProductos(array) {
 
 let articulos = '<br><hr><br>';
   for (let i = 0; i < array.lenght; ++i){
-   let productos = array[i];
+   let productos1 = array[i];
   
-  contenido += `Precio:` + array.price + `<br>;`
+  contenido += `Precio:` + productos1.price + `<br>`
     
     
-  };
+  }
+  
   document.getElementById("productos").innerHTML = articulos;
-};
+}
 
 document.addEventListener("DOMContentLoaded", function (e){
   getJSONData(PRODUCTS_URL).then(function (resultado){ 
