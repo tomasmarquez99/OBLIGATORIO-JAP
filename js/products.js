@@ -51,3 +51,9 @@ document.addEventListener("DOMContentLoaded", function (e) {
     })
 });
 
+document.getElementById("rangeFilterCount").addEventListener('click', function (){
+
+    productosArray.filter()
+
+})
+let btnLimpiar = document.getElementById("clearRangeFilter");
