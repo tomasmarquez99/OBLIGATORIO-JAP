@@ -4,6 +4,8 @@
 
 document.addEventListener("DOMContentLoaded", function (){
 
+    
+
 
 document.getElementById('submitBtn').addEventListener('click', function(){
 
@@ -27,11 +29,13 @@ if (inputPassword.value === ''){
 }
 
  if (camposCompletos){
+    localStorage.setItem('usuario',JSON.stringify({email: inputMail.value}));
     window.location = "inicio.html";
  }
 }
 
 )
+
 
 })
 

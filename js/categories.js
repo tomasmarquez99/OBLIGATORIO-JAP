@@ -58,6 +58,7 @@ function showCategoriesList(){
                         <p class="mb-1">` + category.description + `</p>
                     </div>
                 </div>
+                <br>
             </a>
             `
         }

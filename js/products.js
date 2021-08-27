@@ -18,7 +18,7 @@ function mostrarProductos(array) {
 
           articulos += `
           <br><br>
-          
+          <a class="list-group-item">
               <div class="row">
                   <div class="col-3">
                       <img src="` + productos1.imgSrc + `" alt="` + productos1.description + `" class="img-thumbnail">
@@ -32,12 +32,12 @@ function mostrarProductos(array) {
                   </div>
               </div>
               <br>
-          
+          </a>
           `
       }
     }
 
-      document.getElementById("productos").innerHTML += articulos;
+      document.getElementById("cat-list-container").innerHTML += articulos;
   }
 
 
