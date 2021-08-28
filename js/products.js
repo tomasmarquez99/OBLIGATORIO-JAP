@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
         minCount = document.getElementById("rangeFilterCountMin").value
         maxCount = document.getElementById("rangeFilterCountMax").value
 
-        if ((minCount != undefined) && (minCount != '') && (parseInt(minCount) >= 0)) {
+     if ((minCount != undefined) && (minCount != '') && (parseInt(minCount) >= 0)) {
             minCount = parseInt(minCount);
         } else {
             minCount = undefined
@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
         } else {
             maxCount = undefined
         }
-
+ 
         mostrarProductos(productosArray);
 
     });
@@ -80,10 +80,8 @@ document.addEventListener("DOMContentLoaded", function (e) {
         document.getElementById("cat-list-container").innerHTML = '';
         document.getElementById("rangeFilterCountMin").value = '';
         document.getElementById("rangeFilterCountMax").value = '';
-        
-        minCount = undefined
-
-        maxCount = undefined
+        minCount = undefined;
+        maxCount = undefined;
 
 mostrarProductos(productosArray);
 
