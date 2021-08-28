@@ -12,11 +12,11 @@ function mostrarProductos(array) {
 
     for (let i = 0; i < array.length; i++) {
         let productos1 = array[i];
-        
-    if (((minCount == undefined) || (minCount != undefined && parseInt(productos1.productCount) >= minCount)) &&
-          ((maxCount == undefined) || (maxCount != undefined && parseInt(productos1.productCount) <= maxCount))){
 
-          articulos += `
+        if (((minCount == undefined) || (minCount != undefined && parseInt(productos1.cost) >= minCount)) &&
+            ((maxCount == undefined) || (maxCount != undefined && parseInt(productos1.cost) <= maxCount))) {
+
+            articulos += `
           <br><br>
           <a class="list-group-item">
               <div class="row">
@@ -25,7 +25,7 @@ function mostrarProductos(array) {
                   </div>
                   <div class="col">
                       <div class="d-flex w-100 justify-content-between">
-                          <h4 class="mb-1">`+ productos1.name +`</h4>
+                          <h4 class="mb-1">`+ productos1.name + `</h4>
                           <small class="text-muted"> U$D ` + productos1.cost + ` </small>
                       </div>
                       <p class="mb-1">` + productos1.description + `</p>
@@ -34,11 +34,11 @@ function mostrarProductos(array) {
               <br>
           </a>
           `
-      }
+        }
     }
 
-      document.getElementById("cat-list-container").innerHTML += articulos;
-  }
+    document.getElementById("cat-list-container").innerHTML += articulos;
+}
 
 
 document.addEventListener("DOMContentLoaded", function (e) {
@@ -49,11 +49,29 @@ document.addEventListener("DOMContentLoaded", function (e) {
             mostrarProductos(productosArray);
         }
     })
+
+
+
+    document.getElementById("rangeFilterCount").addEventListener('click', function () {
+
+
+        document.getElementById("cat-list-container").innerHTML = '';
+        minCount = document.getElementById("rangeFilterCountMin").value
+        maxCount = document.getElementById("rangeFilterCountMax").value
+
+        if ((minCount != undefined) && (minCount != '') && (parseInt(minCount) >= 0)) {
+            minCount = parseInt(minCount);
+        } else {
+            minCount = undefined
+        }
+
+        if ((maxCount != undefined) && (maxCount != '') && (parseInt(maxCount) >= 0)) {
+            maxCount = parseInt(maxCount);
+        } else {
+            maxCount = undefined
+        }
+
+        mostrarProductos(productosArray);
+
+    })
 });
-
-document.getElementById("rangeFilterCount").addEventListener('click', function (){
-
-    productosArray.filter()
-
-})
-let btnLimpiar = document.getElementById("clearRangeFilter");
