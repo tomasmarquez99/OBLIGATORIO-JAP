@@ -73,5 +73,19 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
         mostrarProductos(productosArray);
 
+    });
+
+    document.getElementById("clearRangeFilter").addEventListener('click', function () {
+
+        document.getElementById("cat-list-container").innerHTML = '';
+        document.getElementById("rangeFilterCountMin").value = '';
+        document.getElementById("rangeFilterCountMax").value = '';
+        
+        minCount = undefined
+
+        maxCount = undefined
+
+mostrarProductos(productosArray);
+
     })
 });
