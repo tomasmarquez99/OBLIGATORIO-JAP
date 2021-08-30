@@ -10,28 +10,27 @@ const ORDER_ASC_BY_COST = "+-";
 const ORDER_DESC_BY_COST = "-+";
 const ORDER_BY_SOLD_COUNT = "Cant.";
 
-function sortProductos(criteria, array){
+function sortProductos(criteria, array) {
     let result = [];
-    if (criteria === ORDER_ASC_BY_COST)
-    {
-        result = array.sort(function(a, b) {
-            if ( a.cost < b.cost ){ return -1; }
-            if ( a.cost > b.cost ){ return 1; }
+    if (criteria === ORDER_ASC_BY_COST) {
+        result = array.sort(function (a, b) {
+            if (a.cost < b.cost) { return -1; }
+            if (a.cost > b.cost) { return 1; }
             return 0;
         });
-    }else if (criteria === ORDER_DESC_BY_COST){
-        result = array.sort(function(a, b) {
-            if ( a.cost > b.cost ){ return -1; }
-            if ( a.cost < b.cost ){ return 1; }
+    } else if (criteria === ORDER_DESC_BY_COST) {
+        result = array.sort(function (a, b) {
+            if (a.cost > b.cost) { return -1; }
+            if (a.cost < b.cost) { return 1; }
             return 0;
         });
-    }else if (criteria === ORDER_BY_SOLD_COUNT){
-        result = array.sort(function(a, b) {
+    } else if (criteria === ORDER_BY_SOLD_COUNT) {
+        result = array.sort(function (a, b) {
             let aCount = parseInt(a.soldCount);
             let bCount = parseInt(b.soldCount);
 
-            if ( aCount > bCount ){ return -1; }
-            if ( aCount < bCount ){ return 1; }
+            if (aCount > bCount) { return -1; }
+            if (aCount < bCount) { return 1; }
             return 0;
         });
     }
@@ -62,26 +61,28 @@ function mostrarProductos() {
                           <small class="text-muted"> U$D ` + productos1.cost + ` </small>
                       </div>
                       <p class="mb-1">` + productos1.description + `</p>
+                      
                   </div>
               </div>
               <br>
           </a>
+          
           `
         }
     }
 
     document.getElementById("cat-list-container").innerHTML += articulos;
 }
-function sortAndShowCategories(sortCriteria, arrayProductos){
+function sortAndShowCategories(sortCriteria, arrayProductos) {
     currentSortCriteria = sortCriteria;
 
-    if(arrayProductos != undefined){
+    if (arrayProductos != undefined) {
         productosArray = arrayProductos;
     }
 
     productosArray = sortProductos(currentSortCriteria, productosArray);
 
-    //Muestro las categorías ordenadas
+    
     mostrarProductos();
 }
 
@@ -92,17 +93,17 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
         }
     });
-    document.getElementById("sortAsc").addEventListener("click", function(){
+    document.getElementById("sortAsc").addEventListener("click", function () {
         document.getElementById("cat-list-container").innerHTML = '';
         sortAndShowCategories(ORDER_ASC_BY_COST);
     });
 
-    document.getElementById("sortDesc").addEventListener("click", function(){
+    document.getElementById("sortDesc").addEventListener("click", function () {
         document.getElementById("cat-list-container").innerHTML = '';
         sortAndShowCategories(ORDER_DESC_BY_COST);
     });
 
-    document.getElementById("sortByCount").addEventListener("click", function(){
+    document.getElementById("sortByCount").addEventListener("click", function () {
         document.getElementById("cat-list-container").innerHTML = '';
         sortAndShowCategories(ORDER_BY_SOLD_COUNT);
     });
@@ -117,7 +118,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
         minCount = document.getElementById("rangeFilterCountMin").value
         maxCount = document.getElementById("rangeFilterCountMax").value
 
-     if ((minCount != undefined) && (minCount != '') && (parseInt(minCount) >= 0)) {
+        if ((minCount != undefined) && (minCount != '') && (parseInt(minCount) >= 0)) {
             minCount = parseInt(minCount);
         } else {
             minCount = undefined
@@ -128,7 +129,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
         } else {
             maxCount = undefined
         }
- 
+
         mostrarProductos();
 
     });
@@ -141,7 +142,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
         minCount = undefined;
         maxCount = undefined;
 
-mostrarProductos();
+        mostrarProductos();
 
     })
 });
