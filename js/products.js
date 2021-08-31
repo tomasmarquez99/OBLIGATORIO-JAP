@@ -9,6 +9,7 @@ var currentSortCriteria = undefined;
 const ORDER_ASC_BY_COST = "+-";
 const ORDER_DESC_BY_COST = "-+";
 const ORDER_BY_SOLD_COUNT = "Cant.";
+var inputSearch = document.getElementById('inputSearch');
 
 function sortProductos(criteria, array) {
     let result = [];
@@ -93,6 +94,15 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
         }
     });
+
+    function buscador(){
+
+var filtro = inputSearch.value.toUpperCase();
+//recorriendo elementos a filtrar
+
+    };
+
+
     document.getElementById("sortAsc").addEventListener("click", function () {
         document.getElementById("cat-list-container").innerHTML = '';
         sortAndShowCategories(ORDER_ASC_BY_COST);
