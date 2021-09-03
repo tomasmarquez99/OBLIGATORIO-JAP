@@ -26,7 +26,7 @@ function sortProductos(criteria, array) {
     } else if (criteria === ORDER_DESC_BY_COST) {
         result = array.sort(function (a, b) {
             aCost = parseInt(a.cost)
-         bCost = parseInt(b.cost)
+            bCost = parseInt(b.cost)
 
 
             if (aCost > bCost) { return -1; }
@@ -103,12 +103,44 @@ document.addEventListener("DOMContentLoaded", function (e) {
         }
     });
 
-    function buscador() {
 
-        var filtro = inputSearch.value.toUpperCase();
-        //recorriendo elementos a filtrar
+    document.getElementById("inputSearch").addEventListener('input', function () {
+let articulos = '';
+        inputSearch = document.getElementById("inputSearch").value.toLowerCase();
+        document.getElementById("cat-list-container").innerHTML = '';
+        if (inputSearch != '') {
+            for (i = 0; i < productosArray.length; ++i) {
+                if ((productosArray[i].name.toLowerCase().indexOf(inputSearch) != -1) || (productosArray[i].description.toLowerCase().indexOf(inputSearch) != -1)) {
+                    articulos += `
+          <br><br>
+          <a class="list-group-item">
+              <div class="row">
+                  <div class="col-3">
+                      <img src="` + productosArray[i].imgSrc + `" alt="` + productosArray[i].description + `" class="img-thumbnail">
+                  </div>
+                  <div class="col">
+                      <div class="d-flex w-100 justify-content-between">
+                          <h4 class="mb-1">`+ productosArray[i].name + `</h4>
+                          <small class="text-muted"> U$D ` + productosArray[i].cost + ` </small>
+                      </div>
+                      <p class="mb-1">` + productosArray[i].description + `</p>
+                      
+                  </div>
+              </div>
+              <br>
+          </a>
+          
+          `
+                }
+            }
 
-    };
+            document.getElementById("cat-list-container").innerHTML += articulos;
+        } else {
+            mostrarProductos();
+        }
+    })
+
+
 
 
     document.getElementById("sortAsc").addEventListener("click", function () {
