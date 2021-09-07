@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
 
     document.getElementById("inputSearch").addEventListener('input', function () {
-let articulos = '';
+        let articulos = '';
         inputSearch = document.getElementById("inputSearch").value.toLowerCase();
         document.getElementById("cat-list-container").innerHTML = '';
         if (inputSearch != '') {
