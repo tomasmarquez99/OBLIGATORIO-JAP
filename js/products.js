@@ -10,6 +10,7 @@ const ORDER_ASC_BY_COST = "+-";
 const ORDER_DESC_BY_COST = "-+";
 const ORDER_BY_SOLD_COUNT = "Cant.";
 var inputSearch = document.getElementById('inputSearch');
+var producto;
 
 function sortProductos(criteria, array) {
     let result = [];
@@ -59,7 +60,7 @@ function mostrarProductos() {
 
             articulos += `
           <br><br>
-          <a class="list-group-item">
+          <a href='product-info.html' class="list-group-item list-group-item-action">
               <div class="row">
                   <div class="col-3">
                       <img src="` + productos1.imgSrc + `" alt="` + productos1.description + `" class="img-thumbnail">
@@ -103,6 +104,9 @@ document.addEventListener("DOMContentLoaded", function (e) {
         }
     });
 
+    
+ 
+
 
     document.getElementById("inputSearch").addEventListener('input', function () {
         let articulos = '';
@@ -113,7 +117,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
                 if ((productosArray[i].name.toLowerCase().indexOf(inputSearch) != -1) || (productosArray[i].description.toLowerCase().indexOf(inputSearch) != -1)) {
                     articulos += `
           <br><br>
-          <a class="list-group-item">
+          <a href='product-info.html' class="list-group-item list-group-item-action">
               <div class="row">
                   <div class="col-3">
                       <img src="` + productosArray[i].imgSrc + `" alt="` + productosArray[i].description + `" class="img-thumbnail">
@@ -195,4 +199,9 @@ document.addEventListener("DOMContentLoaded", function (e) {
         mostrarProductos();
 
     })
+    document.getElementsByClassName('mb-1').addEventListener('click', function(){
+        if(producto){ 
+            localStorage.setItem('auto', JSON.stringify({producto: productosArray.name}))
+     }
+             });
 });
