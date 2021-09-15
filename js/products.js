@@ -57,10 +57,11 @@ function mostrarProductos() {
 
         if (((minCount == undefined) || (minCount != undefined && parseInt(productos1.cost) >= minCount)) &&
             ((maxCount == undefined) || (maxCount != undefined && parseInt(productos1.cost) <= maxCount))) {
+let nombre = productos1.name
 
             articulos += `
           <br><br>
-          <a href='product-info.html' class="list-group-item list-group-item-action">
+          <a onclick="descripcionProducto(`+ productos1.soldCount +`)" class="list-group-item list-group-item-action">
               <div class="row">
                   <div class="col-3">
                       <img src="` + productos1.imgSrc + `" alt="` + productos1.description + `" class="img-thumbnail">
@@ -71,18 +72,20 @@ function mostrarProductos() {
                           <small class="text-muted"> U$D ` + productos1.cost + ` </small>
                       </div>
                       <p class="mb-1">` + productos1.description + `</p>
-                      
-                  </div>
+                      </div>
               </div>
-              <br>
-          </a>
+            </a>
           
           `
         }
     }
-
+    
     document.getElementById("cat-list-container").innerHTML += articulos;
 }
+
+
+
+
 function sortAndShowCategories(sortCriteria, arrayProductos) {
     currentSortCriteria = sortCriteria;
 
@@ -96,6 +99,16 @@ function sortAndShowCategories(sortCriteria, arrayProductos) {
     mostrarProductos();
 }
 
+function descripcionProducto(saldo){
+    localStorage.setItem('idProducto', JSON.stringify({soldCount: saldo}))
+  
+   window.location = 'product-info.html';
+   
+};
+
+
+
+
 document.addEventListener("DOMContentLoaded", function (e) {
     getJSONData(PRODUCTS_URL).then(function (response) {
         if (response.status === "ok") {
@@ -105,7 +118,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
     });
 
     
- 
 
 
     document.getElementById("inputSearch").addEventListener('input', function () {
@@ -117,7 +129,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
                 if ((productosArray[i].name.toLowerCase().indexOf(inputSearch) != -1) || (productosArray[i].description.toLowerCase().indexOf(inputSearch) != -1)) {
                     articulos += `
           <br><br>
-          <a href='product-info.html' class="list-group-item list-group-item-action">
+          <a onclick="descripcionProducto(`+ productosArray[i].soldCount +`)" class="list-group-item list-group-item-action">
               <div class="row">
                   <div class="col-3">
                       <img src="` + productosArray[i].imgSrc + `" alt="` + productosArray[i].description + `" class="img-thumbnail">
@@ -128,10 +140,9 @@ document.addEventListener("DOMContentLoaded", function (e) {
                           <small class="text-muted"> U$D ` + productosArray[i].cost + ` </small>
                       </div>
                       <p class="mb-1">` + productosArray[i].description + `</p>
-                      
                   </div>
               </div>
-              <br>
+              
           </a>
           
           `
@@ -199,9 +210,5 @@ document.addEventListener("DOMContentLoaded", function (e) {
         mostrarProductos();
 
     })
-    document.getElementsByClassName('mb-1').addEventListener('click', function(){
-        if(producto){ 
-            localStorage.setItem('auto', JSON.stringify({producto: productosArray.name}))
-     }
-             });
+    
 });
