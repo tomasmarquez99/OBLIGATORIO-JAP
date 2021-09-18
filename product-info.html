@@ -67,10 +67,36 @@
         <h3 class="text-center my-3">Deja tu comentario</h3>
         
           <br><br>
-          <textarea name="comentarios" rows="5" cols="91" placeholder="Escribe aquí tus comentarios"></textarea>
+          <textarea name="comentarios" rows="5" cols="112" placeholder="Escribe aquí tus comentarios"></textarea>
           <br><br>
           <div style="text-align: center;">
             <dt>Puntúa</dt><br>
+            <style>
+              .star-rating {
+                  direction: rtl;
+                  display: inline-block;
+                  padding: 20px
+              }
+              
+              .star-rating input[type=radio] {
+                  display: none
+              }
+              
+              .star-rating label {
+                  color: rgb(133, 142, 192);
+                  font-size: 50px;
+                  padding: 0;
+                  cursor: pointer;
+              }
+              
+              .star-rating label:hover,
+              .star-rating label:hover ~ label,
+              .star-rating input[type=radio]:checked ~ label {
+                  color: #ffbf00
+              }
+              </style>
+            
+            
             <div id="stars">
             
 
