@@ -38,24 +38,3 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
 });
 
-/*
-<input id='star-4' type='radio' name='rating' value='4' />
-<label for='star-4' title='4 stars'>
-<i class='active fa fa-star'></i>
-</label>
-
-<input id='star-3' type='radio' name='rating' value='3' />
-<label for='star-3' title='3 stars'>
-<i class='active fa fa-star'></i>
-</label>
-
-<input id='star-2' type='radio' name='rating' value='2' />
-<label for='star-2' title='2 stars'>
-<i class='active fa fa-star'></i>
-</label>
-
-<input id='star-1' type='radio' name='rating' value='1' checked/>
-<label for='star-1' title='1 stars'>
-<i class='active fa fa-star'></i>
-</label>
-</div> */

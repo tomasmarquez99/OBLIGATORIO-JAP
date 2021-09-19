@@ -100,7 +100,7 @@ function sortAndShowCategories(sortCriteria, arrayProductos) {
 }
 
 function descripcionProducto(saldo){
-    localStorage.setItem('idProducto', JSON.stringify({soldCount: saldo}))
+   // localStorage.setItem('idProducto', JSON.stringify({soldCount: saldo}))
   
    window.location = 'product-info.html';
    
