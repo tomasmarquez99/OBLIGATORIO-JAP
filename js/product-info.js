@@ -46,10 +46,12 @@ function showProducts(array) {
 
 }
 
+
+
 function showComments(comentarios) {
     for (let i = 0; i < comentarios.length; i++) {
 
-let misComentarios = comentarios[i];
+        let misComentarios = comentarios[i];
 
         let htmlContentToAppend = "";
 
@@ -59,30 +61,35 @@ let misComentarios = comentarios[i];
             <p>${misComentarios.description}</p>
             
             `
-        
-    
+
+
         let puntos = '';
         let puntosHTML = '';
-        
+
         for (let i = 1; i <= misComentarios.score; ++i) {
             puntos += `<span class="fa fa-star checked"></span>`
 
         }
         for (let i = misComentarios.score + 1; i <= 5; ++i) {
             puntos += `<span class="fa fa-star"></span>`
-    
+
         }
-        console.log(puntos);
-
-         puntosHTML += `<div style="text-align: right;">${puntos}</div><hr>`
 
 
-        document.getElementById("comments").innerHTML +=  htmlContentToAppend + puntosHTML ;
+        puntosHTML += `<div style="text-align: right;">${puntos}</div><hr>`
+
+
+        document.getElementById("comments").innerHTML += htmlContentToAppend + puntosHTML;
 
     }
-   
+
 
 };
+
+function productoRedireccion(){
+    window.location = 'product-info.html'
+}
+
 
 
 
@@ -96,23 +103,73 @@ document.addEventListener("DOMContentLoaded", function () {
             comentarios = result.data;
 
             showComments(comentarios);
-            
+
         }
 
-        getJSONData(PRODUCT_INFO_URL).then(function (resultObj) {
-            if (resultObj.status === "ok") {
+        getJSONData(PRODUCT_INFO_URL)
+            .then(function (resultObj) {
+                if (resultObj.status === "ok") {
 
-                producto = resultObj.data;
+                    producto = resultObj.data;
 
-                showProducts(producto);
-                showImagesGallery(producto.images);
-                
+                    showProducts(producto);
+                    showImagesGallery(producto.images);
 
-            }
-        })
+
+                }
+                getJSONData(PRODUCTS_URL)
+                    .then(function (resultado) {
+                        if (resultado.status === "ok") {
+
+                            productoRelated = resultado.data;
+
+                            console.log(resultado)
+
+
+                            let relatedArray = producto.relatedProducts;
+
+                            console.log(relatedArray)
+
+                            function productosRelacionados(relatedArray, productoRelated) {
+                                for (let i = 0; i < relatedArray.length; i++) {
+
+                                    let productosAMostrar = productoRelated[relatedArray[i]];
+                                    let inserto = document.getElementById('relatedProducts');
+                                    let articulos = '';
+                                    articulos += `
+          
+          <a onclick="productoRedireccion()" class="list-group-item list-group-item-action">
+              <div class="row">
+                  <div class="col-3">
+                      <img src="` + productosAMostrar.imgSrc + `" alt="` + productosAMostrar.description + `" class="img-thumbnail">
+                  </div>
+                  <div class="col">
+                      <div class="d-flex w-100 justify-content-between">
+                          <h4 class="mb-1">`+ productosAMostrar.name + `</h4>
+                          <small class="text-muted"> U$D ` + productosAMostrar.cost + ` </small>
+                      </div>
+                      <p class="mb-1">` + productosAMostrar.description + `</p>
+                      </div>
+              </div>
+            </a>
+            `
+
+                                    inserto.innerHTML += articulos
+                                }
+
+                            }
+
+                            productosRelacionados(relatedArray, productoRelated)
+
+                        };
+
+
+                    })
+
+
+            })
+
+
 
     })
-
-
-
 })
