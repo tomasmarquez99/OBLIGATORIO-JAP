@@ -40,29 +40,54 @@ var getJSONData = function (url) {
     });
 }
 
+
+
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
+
 document.addEventListener("DOMContentLoaded", function (e) {
   let usuarioLogueado = localStorage.getItem('usuario');
 
   let login = document.getElementById('logueate');
 
-  if (usuarioLogueado) {
-    usuarioLogueado = JSON.parse(usuarioLogueado)
-    login.innerText = login.innerText + 'Bienvenido! ' + usuarioLogueado.email;
+  
+
+  function mostrarDropdown (){
+    if (usuarioLogueado) {
+      usuarioLogueado = JSON.parse(usuarioLogueado)
+    }
+
+    let buttonContenido = '';
+
+       buttonContenido += `
+       <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Bienvenido! ${usuarioLogueado.email}
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
+          <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
+          <li><a class="dropdown-item" style="cursor:pointer;" id="salir">Salir</a></li>
+        </ul>
+      </div>`
+
+      login.innerHTML += buttonContenido
   }
+  mostrarDropdown();
 
-  if (document.getElementById('salir')){
 
-    document.getElementById('salir').addEventListener('click', function () {
+  
+    if (document.getElementById('salir')){
+  
+      document.getElementById('salir').addEventListener('click', function () {
+  
+        localStorage.removeItem('usuario');
+        window.location = 'index.html';
+      })
+    }
 
-      localStorage.removeItem('usuario');
-      window.location = 'index.html';
-    
-    
-    
-    })
-  };
+
+
 
 });
