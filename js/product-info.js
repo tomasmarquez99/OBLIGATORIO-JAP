@@ -128,7 +128,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
                             let relatedArray = producto.relatedProducts;
 
-                            console.log(relatedArray)
 
                             function productosRelacionados(relatedArray, productoRelated) {
                                 for (let i = 0; i < relatedArray.length; i++) {
