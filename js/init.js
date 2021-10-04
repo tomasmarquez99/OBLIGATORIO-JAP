@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
   function mostrarDropdown (){
     if (usuarioLogueado) {
-      usuarioLogueado = JSON.parse(usuarioLogueado)
+      usuario = JSON.parse(usuarioLogueado)
     }
 
     let buttonContenido = '';
@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
        buttonContenido += `
        <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Bienvenido! ${usuarioLogueado.email}
+          Bienvenido! ${usuario.email}
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
           <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
