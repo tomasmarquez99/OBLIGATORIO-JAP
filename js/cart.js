@@ -8,21 +8,16 @@ function mostrarCarrito(array) {
         producto = array[i]
 
         htmlContentToAppend += `
-        <hr class="my-3">
-        <h4 id="productName">${producto.name}</h3>
-        <img src="${producto.src}">
-        <dl>
+
+    <div class="row">
         
-        <dd>
-        <br>
-        <p id="precio">Precio:${producto.currency} ${producto.unitCost}</p>
-        </dd>
-  
-        <dt>Cantidad de productos</dt>
-        <dd>
-        <p id="productCount">${producto.count}</p>
-        </dd>
-    
+        <div class='col-1'></div>
+        <img class="col-1" src="${producto.src}">
+        <div class="col-2" id="productName">${producto.name}</div>
+        <div class="col-2" id="precio">Precio: ${producto.currency} ${producto.unitCost}</div>
+        <div id="productCount">Cant. ${producto.count}</div>
+    </div>
+    <br>
     
     `
     document.getElementById('carrito').innerHTML = htmlContentToAppend
