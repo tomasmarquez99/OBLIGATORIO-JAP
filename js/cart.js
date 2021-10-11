@@ -44,11 +44,11 @@ function mostrarCarro(array){
 }
 
 function mostrarSuma(array){
-     let precio = undefined
+     let precio = []
     for (let i = 0; i < array.length; i++) {
         producto = array[i];
         
-        precio = precio + producto.unitCost
+        precio += producto.unitCost
 
 
         
@@ -58,8 +58,20 @@ function mostrarSuma(array){
 
     htmlContentToAppend = `
     <div class="row border">
-    <p class="font-weight-bold">Subtotal: ${precio}</p>
-
+    <div class="col-9">
+    <p class="font-weight-bold">Subtotal:</p>
+</div>
+<div class="col-3">
+${precio}
+</div>
+    </div>
+    <div class="row border">
+    <div class="col-9">
+    <p class="font-weight-bold">Costo de envío:</p>
+</div>
+<div class="col-3">
+Costo
+</div>
     </div>
     `
 
