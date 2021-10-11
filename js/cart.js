@@ -9,13 +9,13 @@ function mostrarCarrito(array) {
 
         htmlContentToAppend += `
 
-    <div class="row">
+    <div class="row border">
         
         <div class='col-1'></div>
-        <img class="col-1" src="${producto.src}">
-        <div class="col-2" id="productName">${producto.name}</div>
-        <div class="col-2" id="precio">Precio: ${producto.currency} ${producto.unitCost}</div>
-        <div id="productCount">Cant. ${producto.count}</div>
+        <img class="col-2 p-2" src="${producto.src}">
+        <div class="col-4 p-2" id="productName">${producto.name}</div>
+        <div class="col-3 p-2" id="precio">Precio unitario: ${producto.currency} ${producto.unitCost}</div>
+        <div class='col-2 p-2' id="productCount">${producto.count}</div>
     </div>
     <br>
     
@@ -23,6 +23,48 @@ function mostrarCarrito(array) {
     document.getElementById('carrito').innerHTML = htmlContentToAppend
 
     }
+}
+
+function mostrarCarro(array){
+    let htmlContentToAppend = '';
+    for (let i = 0; i < array.length; i++) {
+        producto = array[i]
+    htmlContentToAppend += `
+    <div class="row border">
+    <div class='col-6'>${producto.name}</div>
+    <div class='col-3'></div>
+    <div class='col-3'>${producto.currency} ${producto.unitCost}</div>
+</div>
+
+    `
+
+
+    document.getElementById('compraCarrito').innerHTML = htmlContentToAppend
+    }
+}
+
+function mostrarSuma(array){
+     let precio = undefined
+    for (let i = 0; i < array.length; i++) {
+        producto = array[i];
+        
+        precio = precio + producto.unitCost
+
+
+        
+    }
+
+    console.log(precio)
+
+    htmlContentToAppend = `
+    <div class="row border">
+    <p class="font-weight-bold">Subtotal: ${precio}</p>
+
+    </div>
+    `
+
+    document.getElementById('sumaCarrito').innerHTML = htmlContentToAppend
+
 }
 
 
@@ -36,8 +78,8 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
                 
                 mostrarCarrito(productoCarrito.articles);
-
-
+                mostrarCarro(productoCarrito.articles)
+mostrarSuma(productoCarrito.articles)
             }
 
         });
