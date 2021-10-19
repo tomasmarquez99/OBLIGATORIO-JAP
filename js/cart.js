@@ -12,9 +12,8 @@ function calcSubTotal(i) {
 }
 
 function calcTotal() {
-    let subtotal = document.getElementById('subtotal').innerHTML
+    let subtotal = document.getElementById('subtotal').innerHTML // + envío
     document.getElementById('total').innerHTML = subtotal
-    console.log(subtotal)
 }
 
 
@@ -41,9 +40,10 @@ function mostrarCarrito(array) {
     
     
     `
+      document.getElementById('carrito').innerHTML = htmlContentToAppend
 
 
-        document.getElementById('carrito').innerHTML = htmlContentToAppend
+
         let htmlContentToAppend2 = '';
         htmlContentToAppend2 += `
           <div class="row border">
@@ -99,77 +99,6 @@ function mostrarCarrito(array) {
 
 }
 
-/*
-function mostrarCarro(array) {
-    let htmlContentToAppend = '';
-    let dolares = ''
-    for (let i = 0; i < array.length; i++) {
-        producto = array[i]
-        htmlContentToAppend2 += `
-    <div class="row border">
-    <div class='col-6'>${producto.name}</div>
-    <div class='col-3'></div>
-    <div class='col-3'>${producto.currency}  ${producto.unitCost}</div>
-</div>
-
-    `
-
-
-        document.getElementById('compraCarrito').innerHTML = htmlContentToAppend2;
-
-
-    }
-}
-
-function mostrarSuma(array) {
-    let precio = []
-
-    for (let i = 0; i < array.length; i++) {
-        producto = array[i];
-
-        precio += producto.currency + " " + producto.unitCost
-
-
-
-    }
-
-    console.log(precio)
-
-    htmlContentToAppend3 = `
-    <div class="row border">
-    <div class="col-9">
-    <p class="font-weight-bold">Subtotal:</p>
-    </div>
-    <div class="col-3" id='subtotal'>
-
-    </div>
-    </div>
-    <div class="row border">
-    <div class="col-9">
-    <p class="font-weight-bold">Costo de envío:</p>
-    </div>
-    <div class="col-3">
-      Costo
-    </div>
-    </div>
-
-    <div class="row border" style="height: 50px">
-    </div>
-
-    <div class="row border">
-    <div class="col-9">
-    <p class="font-weight-bold">Costo TOTAL</p>
-    </div>
-    <div class="col-3" id='total'>
-    
-    </div>
-    </div>
-    `
-
-    document.getElementById('sumaCarrito').innerHTML = htmlContentToAppend3
-
-}
-*/
 
 document.addEventListener("DOMContentLoaded", function (e) {
 
@@ -178,11 +107,8 @@ document.addEventListener("DOMContentLoaded", function (e) {
             if (resultObj.status === "ok") {
 
                 productoCarrito = resultObj.data;
-
-
+                
                 mostrarCarrito(productoCarrito.articles);
-                /*mostrarCarro(productoCarrito.articles)
-                mostrarSuma(productoCarrito.articles)*/
 
             }
 
