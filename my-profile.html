@@ -34,6 +34,7 @@
 </head>
 
 <body>
+
   <nav class="site-header sticky-top py-1 bg-dark">
     <div class="container d-flex flex-column flex-md-row justify-content-between">
       <a class="py-2 d-none d-md-inline-block" href="inicio.html">Inicio</a>
@@ -44,35 +45,77 @@
     </div>
   </nav>
   <main>
-    <div class="container">
-      <div class="row border">
-        <div class="col-1"></div>
-        <div class="col-10">
-          <div class="text-center p-4">
-            <h2>Mi perfil</h2>
-            <p class="lead">Registro de sus datos</p>
-          </div>
-          <div class="container border">
-            <div class="row mb-2">
-                <div class="mb-2 border">
-                  <input type="text" placeholder="Nombre">
-                </div>
-                  <p class=" mb-2 border">Nombre: </p>
-            </div>
-            <div class="mb-2">
-              <input type="text" placeholder="Apellido">
-            </div>
-            <div class="mb-2">
-              <input type="text" placeholder="Edad">
-            </div>
-            <div class="mb-2">
-              <input type="text" placeholder="Mail">
-            </div>
-          </div>
+    <div class="container-fluid">
 
+      <div class="row justify-content-center">
+        <div class="text-center p-4">
+          <h2>Mi perfil</h2>
+          <p class="lead">Registro de sus datos</p>
         </div>
-        <div class="col-1"></div>
       </div>
+
+      <div class="row justify-content-center">
+        <div class="col-4">
+          <p>
+            <button class="btn btn-light btn-lg btn-block" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+              Ingresá tus datos
+            </button>
+          </p>
+
+          <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+              <div class="row">
+
+                <div class="">
+                  <input type="text" id="nombre" placeholder="Nombre">
+
+                  <div class="">
+                    <input type="text" id="apellido" placeholder="Apellido">
+                  </div>
+                  <div class="">
+                    <input type="text" id="edad" placeholder="Edad">
+                  </div>
+                  <div class="">
+                    <input type="text" id="correo" placeholder="Mail">
+                  </div>
+                  <div class="">
+                    <input type="text" id="telefono" placeholder="Teléfono">
+                  </div>
+
+                </div>
+                <button class="btn btn-light btn-lg btn-block" id="btnDatos" type="button">Enviar</button>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="text-center p-4">
+        <p class="lead">Tus datos</p>
+      </div>
+
+      <div id="datos" class="row justify-content-center">
+       <ul>
+         <li>
+        <p class="m-2">Nombre: </p>
+      </li>
+      <li>
+       <p class="m-2">Edad: </p>
+      </li>
+      <li>
+       <p class="m-2"> Email: </p>
+      </li>
+      <li>
+        <p class="m-2"> Teléfono: </p>
+       </li>
+      </ul>
+      </div>
+
+
+    </div>
     </div>
   </main>
   <footer class="text-muted bg-light">
