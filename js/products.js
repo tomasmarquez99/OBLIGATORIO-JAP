@@ -57,11 +57,12 @@ function mostrarProductos() {
 
         if (((minCount == undefined) || (minCount != undefined && parseInt(productos1.cost) >= minCount)) &&
             ((maxCount == undefined) || (maxCount != undefined && parseInt(productos1.cost) <= maxCount))) {
-let nombre = productos1.name
+            let nombre = productos1.name
 
             articulos += `
-          <br><br>
-          <a onclick="descripcionProducto(`+ productos1.soldCount +`)" class="list-group-item list-group-item-action">
+            <div class="col">
+          
+          <a onclick="descripcionProducto(`+ productos1.soldCount + `)" class="list-group-item list-group-item-action">
               <div class="row">
                   <div class="col-3">
                       <img src="` + productos1.imgSrc + `" alt="` + productos1.description + `" class="img-thumbnail">
@@ -75,11 +76,11 @@ let nombre = productos1.name
                       </div>
               </div>
             </a>
-          
+          </div>
           `
         }
     }
-    
+
     document.getElementById("cat-list-container").innerHTML += articulos;
 }
 
@@ -99,11 +100,11 @@ function sortAndShowCategories(sortCriteria, arrayProductos) {
     mostrarProductos();
 }
 
-function descripcionProducto(saldo){
-   // localStorage.setItem('idProducto', JSON.stringify({soldCount: saldo}))
-  
-   window.location = 'product-info.html';
-   
+function descripcionProducto(saldo) {
+    // localStorage.setItem('idProducto', JSON.stringify({soldCount: saldo}))
+
+    window.location = 'product-info.html';
+
 };
 
 
@@ -117,7 +118,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
         }
     });
 
-    
+
 
 
     document.getElementById("inputSearch").addEventListener('input', function () {
@@ -129,7 +130,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
                 if ((productosArray[i].name.toLowerCase().indexOf(inputSearch) != -1) || (productosArray[i].description.toLowerCase().indexOf(inputSearch) != -1)) {
                     articulos += `
           <br><br>
-          <a onclick="descripcionProducto(`+ productosArray[i].soldCount +`)" class="list-group-item list-group-item-action">
+          <a onclick="descripcionProducto(`+ productosArray[i].soldCount + `)" class="list-group-item list-group-item-action">
               <div class="row">
                   <div class="col-3">
                       <img src="` + productosArray[i].imgSrc + `" alt="` + productosArray[i].description + `" class="img-thumbnail">
@@ -210,5 +211,5 @@ document.addEventListener("DOMContentLoaded", function (e) {
         mostrarProductos();
 
     })
-    
+
 });
