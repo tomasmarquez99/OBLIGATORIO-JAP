@@ -60,7 +60,7 @@ function mostrarProductos() {
             let nombre = productos1.name
 
             articulos += `
-            <div class="col">
+            <div class="col- ">
           
           <a onclick="descripcionProducto(`+ productos1.soldCount + `)" class="list-group-item list-group-item-action">
               <div class="row">
