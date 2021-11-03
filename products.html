@@ -16,15 +16,60 @@
 </head>
 
 <body>
-  <nav class="site-header sticky-top py-1 bg-dark">
+  <nav class="site-header sticky-top py-1 bg-dark d-none d-sm-none d-md-block">
     <div class="container d-flex flex-column flex-md-row justify-content-between">
-      <a class="py-2 d-none d-md-inline-block" href="inicio.html">Inicio</a>
-      <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
-      <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
-      <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
+
+      <a class="py-2 d-none d-md-inline-block d-none d-sm-none d-md-block" href="inicio.html">Inicio</a>
+      <a class="py-2 d-none d-md-inline-block d-none d-sm-none d-md-block" href="categories.html">Categorías</a>
+      <a class="py-2 d-none d-md-inline-block d-none d-sm-none d-md-block" href="products.html">Productos</a>
+      <a class="py-2 d-none d-md-inline-block d-none d-sm-none d-md-block" href="sell.html">Vender</a>
+
+      <input type="search" placeholder="Buscar" id="inputSearch" class="">
       <div id="logueate"></div>
+
     </div>
   </nav>
+
+  <nav class="sticky-top py-1 bg-dark d-md-none">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-2 m-1">
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              <i class="fas fa-align-justify"></i></button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="inicio.html">Inicio</a></li>
+              <li><a class="dropdown-item" href="categories.html">Categoria</a></li>
+              <li><a class="dropdown-item" href="products.html">Productos</a></li>
+              <li><a class="dropdown-item" href="sell.html">Vender</a></li>
+              <!-- <li><input type="search" placeholder="Buscar" id="inputSearch" class=""></li> -->
+
+
+              <div class="input-group input-group-sm mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-sm"><i class="fas fa-search"></i></span>
+                </div>
+                <input type="search" id="inputSearch2" class="form-control" aria-label="Buscar">
+              </div>
+            </ul>
+          </div>
+
+        </div>
+        <div class="col-4">
+          
+        </div>
+        <div class="col-3 m-1">
+          <div id="logueate2">
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+
   <main role="main" class="pb-5">
     <div class="text-center p-4">
       <h2>Productos</h2>
@@ -34,7 +79,7 @@
       <div class="row">
         <div class="col text-right">
           <div class="btn-group btn-group-toggle mb-4" data-toggle="buttons">
-            <label class="btn btn-light active" id="sortAsc">
+            <label class="btn btn-light" id="sortAsc">
               <input type="radio" name="options" autocomplete="off" checked>Menor a mayor
             </label>
             <label class="btn btn-light" id="sortDesc">
@@ -60,7 +105,7 @@
             <div class="col">
               <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax">
             </div>
-            <div class="col-3 p-0">
+            <div class="col p-0">
               <div class="btn-group" role="group">
                 <button class="btn btn-light btn-block" id="rangeFilterCount">Filtrar</button>
                 <button class="btn btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
@@ -70,8 +115,8 @@
         </div>
       </div>
 
-      <div class="row">
-        <div class="list-group" id="cat-list-container">
+      <div class="container-fluid">
+        <div class="row" id="cat-list-container">
         </div>
       </div>
 

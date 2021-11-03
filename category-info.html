@@ -13,16 +13,54 @@
   <!-- Bootstrap core CSS -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
 </head>
 
 <body>
-  <nav class="site-header sticky-top py-1 bg-dark">
+  <nav class="site-header sticky-top py-1 bg-dark d-none d-sm-none d-md-block">
     <div class="container d-flex flex-column flex-md-row justify-content-between">
-      <a class="py-2 d-none d-md-inline-block" href="inicio.html">Inicio</a>
-      <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
-      <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
-      <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
+
+      <a class="py-2 d-none d-md-inline-block d-none d-sm-none d-md-block" href="inicio.html">Inicio</a>
+      <a class="py-2 d-none d-md-inline-block d-none d-sm-none d-md-block" href="categories.html">Categorías</a>
+      <a class="py-2 d-none d-md-inline-block d-none d-sm-none d-md-block" href="products.html">Productos</a>
+      <a class="py-2 d-none d-md-inline-block d-none d-sm-none d-md-block" href="sell.html">Vender</a>
+
+      <input type="search" placeholder="Buscar" id="inputSearch" class="">
       <div id="logueate"></div>
+
+    </div>
+  </nav>
+
+  <nav class="sticky-top py-1 bg-dark d-md-none">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-2 m-1">
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              <i class="fas fa-align-justify"></i></button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="inicio.html">Inicio</a></li>
+              <li><a class="dropdown-item" href="categories.html">Categoria</a></li>
+              <li><a class="dropdown-item" href="products.html">Productos</a></li>
+              <li><a class="dropdown-item" href="sell.html">Vender</a></li>
+              <!-- <li><input type="search" placeholder="Buscar" id="inputSearch" class=""></li> -->
+            </ul>
+          </div>
+
+
+
+        </div>
+        <div class="col-4">
+
+        </div>
+        <div class="col-3 m-1">
+          <div id="logueate2">
+
+
+          </div>
+        </div>
+      </div>
     </div>
   </nav>
   <main role="main">

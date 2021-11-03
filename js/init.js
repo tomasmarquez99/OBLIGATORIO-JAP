@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
   let usuarioLogueado = localStorage.getItem('usuario');
 
   let login = document.getElementById('logueate');
-
+  let login2 = document.getElementById('logueate2');
   
 
   function mostrarDropdown (){
@@ -73,6 +73,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
       </div>`
 
       login.innerHTML += buttonContenido
+      login2.innerHTML += buttonContenido
   }
   mostrarDropdown();
 

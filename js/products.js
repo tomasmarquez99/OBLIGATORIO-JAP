@@ -60,21 +60,26 @@ function mostrarProductos() {
             let nombre = productos1.name
 
             articulos += `
-            <div class="col- ">
-          
+        
+          <div class="col-12 col-sm-11 col-md-4 col-lg-4 col-xl-4 p-2">
           <a onclick="descripcionProducto(`+ productos1.soldCount + `)" class="list-group-item list-group-item-action">
               <div class="row">
-                  <div class="col-3">
-                      <img src="` + productos1.imgSrc + `" alt="` + productos1.description + `" class="img-thumbnail">
-                  </div>
-                  <div class="col">
+                   <div class="row">
+                         <div class="col-12">
+                                <img src="` + productos1.imgSrc + `" alt="` + productos1.description + `" class="img-thumbnail">
+                         </div>
+                   </div>
+                  
+                <div class="row p-3">
                       <div class="d-flex w-100 justify-content-between">
-                          <h4 class="mb-1">`+ productos1.name + `</h4>
+                          <h4 class="m-2">`+ productos1.name + `</h4>
                           <small class="text-muted"> U$D ` + productos1.cost + ` </small>
                       </div>
-                      <p class="mb-1">` + productos1.description + `</p>
+                   
+                      <p class="m-2">` + productos1.description + `</p>
                       </div>
               </div>
+              
             </a>
           </div>
           `
@@ -129,23 +134,27 @@ document.addEventListener("DOMContentLoaded", function (e) {
             for (i = 0; i < productosArray.length; ++i) {
                 if ((productosArray[i].name.toLowerCase().indexOf(inputSearch) != -1) || (productosArray[i].description.toLowerCase().indexOf(inputSearch) != -1)) {
                     articulos += `
-          <br><br>
-          <a onclick="descripcionProducto(`+ productosArray[i].soldCount + `)" class="list-group-item list-group-item-action">
-              <div class="row">
-                  <div class="col-3">
-                      <img src="` + productosArray[i].imgSrc + `" alt="` + productosArray[i].description + `" class="img-thumbnail">
-                  </div>
-                  <div class="col">
-                      <div class="d-flex w-100 justify-content-between">
-                          <h4 class="mb-1">`+ productosArray[i].name + `</h4>
-                          <small class="text-muted"> U$D ` + productosArray[i].cost + ` </small>
-                      </div>
-                      <p class="mb-1">` + productosArray[i].description + `</p>
-                  </div>
-              </div>
-              
-          </a>
-          
+                    <div class="col-12 col-sm-11 col-md-4 col-lg-4 col-xl-4 p-2">
+                    <a onclick="descripcionProducto(`+ productosArray[i].soldCount + `)" class="list-group-item list-group-item-action">
+                        <div class="row">
+                             <div class="row">
+                                   <div class="col-12">
+                                          <img src="` + productosArray[i].imgSrc + `" alt="` + productosArray[i].description + `" class="img-thumbnail">
+                                   </div>
+                             </div>
+                            
+                          <div class="row p-3">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h4 class="m-2">`+ productosArray[i].name + `</h4>
+                                    <small class="text-muted"> U$D ` + productosArray[i].cost + ` </small>
+                                </div>
+                             
+                                <p class="m-2">` + productosArray[i].description + `</p>
+                                </div>
+                        </div>
+                        
+                      </a>
+                    </div>
           `
                 }
             }
@@ -155,6 +164,46 @@ document.addEventListener("DOMContentLoaded", function (e) {
             mostrarProductos();
         }
     })
+
+    document.getElementById("inputSearch2").addEventListener('input', function () {
+        let articulos = '';
+        inputSearch = document.getElementById("inputSearch2").value.toLowerCase();
+        document.getElementById("cat-list-container").innerHTML = '';
+        if (inputSearch != '') {
+            for (i = 0; i < productosArray.length; ++i) {
+                if ((productosArray[i].name.toLowerCase().indexOf(inputSearch) != -1) || (productosArray[i].description.toLowerCase().indexOf(inputSearch) != -1)) {
+                    articulos += `
+                    <div class="col-12 col-sm-11 col-md-4 col-lg-4 col-xl-4 p-2">
+                    <a onclick="descripcionProducto(`+ productosArray[i].soldCount + `)" class="list-group-item list-group-item-action">
+                        <div class="row">
+                             <div class="row">
+                                   <div class="col-12">
+                                          <img src="` + productosArray[i].imgSrc + `" alt="` + productosArray[i].description + `" class="img-thumbnail">
+                                   </div>
+                             </div>
+                            
+                          <div class="row p-3">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h4 class="m-2">`+ productosArray[i].name + `</h4>
+                                    <small class="text-muted"> U$D ` + productosArray[i].cost + ` </small>
+                                </div>
+                             
+                                <p class="m-2">` + productosArray[i].description + `</p>
+                                </div>
+                        </div>
+                        
+                      </a>
+                    </div>
+          `
+                }
+            }
+
+            document.getElementById("cat-list-container").innerHTML += articulos;
+        } else {
+            mostrarProductos();
+        }
+    })
+
 
 
 
