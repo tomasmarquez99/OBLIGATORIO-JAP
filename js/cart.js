@@ -3,17 +3,40 @@
 //elementos HTML presentes.
 
 var suma = undefined
+var subtotal = 0
+
+
 
 function calcSubTotal(i) {
     let productos = parseInt(document.getElementById(`cantidad${i}`).value)
     subtotal = producto.unitCost * productos
-    document.getElementById('subtotal').innerHTML = subtotal
+    document.getElementById('subtotal').innerHTML = producto.currency + " " + (parseInt(subtotal))
     calcTotal();
 }
 
+function guardar() {};
+
 function calcTotal() {
-    let subtotal = document.getElementById('subtotal').innerHTML // + envío
-    document.getElementById('total').innerHTML = subtotal
+    
+    let costoEnvio = 0
+
+    let premium = document.getElementById("premium").checked
+    let express = document.getElementById("express").checked
+    let standard = document.getElementById("standard").checked
+
+    if (premium) {
+        costoEnvio = Math.floor(subtotal * 15) / 100
+    }
+    if (express) {
+        costoEnvio = Math.floor(subtotal * 7) / 100
+    }
+    if (standard) {
+        costoEnvio = Math.floor(subtotal * 5) / 100
+    }
+    document.getElementById('total').innerHTML = producto.currency + " " + (parseInt(subtotal) + parseInt(costoEnvio))
+    document.getElementById('envio').innerHTML = producto.currency + " " + costoEnvio
+
+    console.log(producto.currency)
 }
 
 
@@ -40,7 +63,7 @@ function mostrarCarrito(array) {
     
     
     `
-      document.getElementById('carrito').innerHTML = htmlContentToAppend
+        document.getElementById('carrito').innerHTML = htmlContentToAppend
 
 
 
@@ -56,9 +79,9 @@ function mostrarCarrito(array) {
 
 
         document.getElementById('compraCarrito').innerHTML = htmlContentToAppend2;
-        
-        
-        
+
+
+
         let htmlContentToAppend3 = '';
 
         htmlContentToAppend3 = `
@@ -73,8 +96,7 @@ function mostrarCarrito(array) {
     <div class="col-9">
     <p class="font-weight-bold">Costo de envío:</p>
     </div>
-    <div class="col-3">
-      Costo
+    <div class="col-3" id="envio">
     </div>
     </div>
 
@@ -93,11 +115,46 @@ function mostrarCarrito(array) {
 
         document.getElementById('sumaCarrito').innerHTML = htmlContentToAppend3
 
+
+
+
+        let htmlContentToAppend4 = "";
+
+        htmlContentToAppend4 = `
+<div class="form-check">
+              <input class="form-check-input" onchange='calcSubTotal(${i})' type="radio" name="envio" id="premium" value="premium" checked>
+              <label class="form-check-label" for="exampleRadios1">
+                Premium (2-5 días)
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" onchange='calcSubTotal(${i})' type="radio" name="envio" id="express" value="express">
+              <label class="form-check-label" for="exampleRadios2">
+                Express (5-8 días)
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" onchange='calcSubTotal(${i})' type="radio" name="envio" id="standard" value="standard">
+              <label class="form-check-label" for="exampleRadios3">
+                Standard (12 a 15 días)
+              </label>
+            </div>
+`
+
+
+
+        document.getElementById('checkBox').innerHTML = htmlContentToAppend4
+
+
         calcSubTotal(i)
 
     }
 
 }
+
+
+
+
 
 
 document.addEventListener("DOMContentLoaded", function (e) {
@@ -107,10 +164,13 @@ document.addEventListener("DOMContentLoaded", function (e) {
             if (resultObj.status === "ok") {
 
                 productoCarrito = resultObj.data;
-                
+
                 mostrarCarrito(productoCarrito.articles);
 
             }
 
         });
+
+
+
 })
