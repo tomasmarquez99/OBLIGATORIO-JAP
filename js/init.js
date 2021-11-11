@@ -62,14 +62,14 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
        buttonContenido += `
        <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Bienvenido! ${usuario.email}
         </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
           <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
           <li><a class="dropdown-item" style="cursor:pointer;" id="salir">Salir</a></li>
-        </ul>
+        </div>
       </div>`
 
       login.innerHTML += buttonContenido
